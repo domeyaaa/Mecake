@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/home.css">
+    <link rel="icon" href="/images/web/logo_1.png">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Me Cake | หน้าหลัก</title>
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <a href="#nav">
+        <div class="plus">
+            <i class="material-icons" style="font-size:36px">expand_less</i>
+        </div>
+    </a>
+    <nav id="nav">
+        <ul>
+            <a href="/home"><img class="logo" src="/images/web/logo.png" alt="logo"></a>
+            <li class="btn"><a href="/profile">
+                    <%=user.username %>
+                </a></li>
+            <li class="btn"><a href="/addrecipe">เพิ่มสูตร</a></li>
+            <li class="btn "><a class="active" href="/home">หน้าหลัก</a></li>
+        </ul>
+    </nav>
+    <div class="wrapper-home">
+        <div class="menu-box">
+            <div class="menu-bar">
+                <div id="menu1" class="butter-cake menu-btn"
+                    style="border-top-left-radius: 30px;border-bottom-left-radius: 30px;"
+                    onclick="document.location.href='/home/buttercake'">
+                    <div class="img-menu">
+                        <img src="/images/web/bread.png" alt="butter-menu">
+                    </div>
+                    <div class="name-menu">
+                        <span class="menu-active">บัตเตอร์เค้ก</span>
+                    </div>
+                </div>
+                <div id="menu2" class="cheese-cake menu-btn" onclick="document.location.href='/home/cheesecake'">
+                    <div class="img-menu" id="two">
+                        <img src="/images/web/cheese.png" style="height: 70%;" alt="cheese-menu">
+                    </div>
+                    <div class="name-menu">
+                        <span>ชีสเค้ก</span>
+                    </div>
+                </div>
+                <div id="menu3" class="red-velvet-cake menu-btn" onclick="document.location.href='/home/redvelvetcake'">
+                    <div class="img-menu">
+                        <img src="/images/web/cake-slice copy.png" style="height:65%;" alt="red-velvet-menu">
+                    </div>
+                    <div class="name-menu">
+                        <span>เรดเวลเวตเค้ก</span>
+                    </div>
+                </div>
+                <div id="menu4" class="sponge-cake menu-btn" onclick="document.location.href='/home/spongecake'">
+                    <div class="img-menu">
+                        <img src="/images/web/birthday-cake.png" alt="sponge-menu" style="height:65%;">
+                    </div>
+                    <div class="name-menu">
+                        <span>สปันจ์เค้ก</span>
+                    </div>
+                </div>
+                <div id="menu5" class="chiffon-cake menu-btn" onclick="document.location.href='/home/chiffoncake'">
+                    <div class="img-menu">
+                        <img src="/images/web/muffin2.png" alt="chiffon-menu" style="height:65%;">
+                    </div>
+                    <div class="name-menu">
+                        <span>ชิฟฟอนเค้ก</span>
+                    </div>
+                </div>
+                <div id="menu6" class="flour-cake menu-btn" onclick="document.location.href='/home/flourcake'">
+                    <div class="img-menu">
+                        <img src="/images/web/ice-cream.png" alt="flour-menu" style="height: 65%;">
+                    </div>
+                    <div class="name-menu">
+                        <span>เค้กไร้แป้ง</span>
+                    </div>
+                </div>
+                <div id="menu7" class="fruit-cake menu-btn" style="border-bottom-right-radius:30px;border-top-right-radius: 30px;"
+                    onclick="document.location.href='/home/fruitcake'">
+                    <div class="img-menu">
+                        <img src="/images/web/cake-slice.png" alt="fruit-menu" style="height: 65%;">
+                    </div>
+                    <div class="name-menu">
+                        <span>เค้กผลไม้</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header"></div>
+            <div class="content-box">
+                <% allcake.forEach((item)=>{ %>
+                    <div class="cake-box" onclick="document.location.href='/recipe?id=<%=item._id %>'">
+                        <div class="img-box" style="background-image: url('/images/post/<%=item.cake_pic %>');">
+                        </div>
+                        <div class="detail-box">
+                            <strong>ชื่อเมนู : </strong> <span>
+                                <%=item.recipe_name %>
+                            </span> <br>
+                            <strong>ชนิดเค้ก : </strong> <span>
+                                <%=item.category %>
+                            </span> <br>
+                            <strong>ชื่อคนโพสต์ : </strong> <span>
+                                <%= item.userData[0].username %>
+                            </span>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+    </div>
+    <% if(locals.active){ %>
+        <script>
+            if ('<%=active %>' == 'active1') {
+                var element = document.getElementById("menu1");
+                element.classList.add('active-menu')
+            }else if('<%=active %>' == 'active2'){
+                var element = document.getElementById("menu2");
+                element.classList.add('active-menu')
+            }
+            else if('<%=active %>' == 'active3'){
+                var element = document.getElementById("menu3");
+                element.classList.add('active-menu')
+            }
+            else if('<%=active %>' == 'active4'){
+                var element = document.getElementById("menu4");
+                element.classList.add('active-menu')
+            }
+            else if('<%=active %>' == 'active5'){
+                var element = document.getElementById("menu5");
+                element.classList.add('active-menu')
+            }
+            else if('<%=active %>' == 'active6'){
+                var element = document.getElementById("menu6");
+                element.classList.add('active-menu')
+            }
+            else if('<%=active %>' == 'active7'){
+                var element = document.getElementById("menu7");
+                element.classList.add('active-menu')
+            }
+        </script>
+    <% } %>
+
+</html>

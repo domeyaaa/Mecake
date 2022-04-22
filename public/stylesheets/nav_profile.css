@@ -1,0 +1,27 @@
+
+.nav-item ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+}
+.nav-item li{
+    padding: 14px 45px 14px 0;
+}
+.nav-item li a {
+    display: block;
+    text-align: center;
+    font-size: 1.2em;
+    color: #000;
+    text-decoration: none;
+    
+}
+.nav-item li a:hover {
+    border-bottom: 4px solid #f48b29;
+    transition: all 0.2s linear;
+}
+.nav-item li .active{
+    font-weight: bold;
+    border-bottom: 4px solid #f48b29;
+}

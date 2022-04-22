@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mecake | จัดการผู้ใช้งาน</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/nav.css">
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+    <link rel="stylesheet" href="/stylesheets/nav_profile.css">
+    <link rel="stylesheet" href="/stylesheets/content_profile.css">
+    <!-- <link rel="stylesheet" href="../css/popup.css"> -->
+    <!-- icon -->
+    <link rel="icon" href="/images/web/logo_1.png">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.logout-btn').click(function () {
+                $('.popup_logout').css("display", "block");
+            });
+            $('.btn-confirm').click(function () {
+                $('.popup_logout').css("display", "none");
+            });
+            $('.btn-cancel').click(function () {
+                $('.popup_logout').css("display", "none");
+            });
+            $('.btn_delete').click(function () {
+                $('.popup_box').css("display", "block");
+            });
+            $('.btn-confirm').click(function () {
+                $('.popup_box').css("display", "none");
+            });
+            $('.btn-cancel').click(function () {
+                $('.popup_box').css("display", "none");
+            });
+        });
+
+    </script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div class="popup_box">
+        <i class="fi fi-rr-exclamation"></i>
+        <h1>คุณต้องการที่จะลบจริง ๆ ใช่ไหม</h1>
+        <div class="btns">
+            <a id="u" class="btn-confirm" style="text-decoration: none;" >ยืนยัน</a>
+            <a href="#" class="btn-cancel" style="text-decoration: none;" >ยกเลิก</a>
+        </div>
+    </div>
+    <a href="#nav">
+        <div class="plus">
+            <i class="material-icons" style="font-size:36px">expand_less</i>
+        </div>
+    </a>
+    <nav id="nav">
+        <ul>
+            <a href="/home"><img class="logo" src="/images/web/logo.png" alt="logo"></a>
+            <li class="btn"><a class="active" href="/profile">
+                    <%=user.username %>
+                </a></li>
+            <li class="btn"><a href="/addrecipe">เพิ่มสูตร</a></li>
+            <li class="btn "><a href="/home">หน้าหลัก</a></li>
+        </ul>
+    </nav>
+    <div class="contrainer">
+        <div class="profile">
+            <div class="box">
+                <img class="profile_img" src="/images/web/profile_user.png" alt="profile">
+                <div class="profile_name">
+                    <p class="username"><%=user.username %></p>
+                    <p class="email"><%user.email %></p>
+                </div>
+            </div>
+            <div class="box">
+                <button class="edit-btn" onclick="location.href='/editprofile'">แก้ไขข้อมูลส่วนตัว</button>
+                <button class="logout-btn">ออกจากระบบ</button>
+                <div class="popup_logout">
+                    <i class="fi fi-rr-exclamation"></i>
+                    <h1>คุณยืนยันจะออกจากระบบหรือไม่</h1>
+                    <div class="btns">
+                        <a href="/logout" class="btn-confirm">ยืนยัน</a>
+                        <a href="#" class="btn-cancel">ยกเลิก</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <ul class="nav-tabs">
+                <li><a href="/profile">สูตรของฉัน</a></li>
+                <li><a class="active" href="/manageuser">จัดการบัญชีผู้ใช้งาน</a></li>
+                <li><a href="/managepost">จัดการโพสต์</a></li>
+            </ul>
+        </div>
+        <div class="count_recipe">
+            <p>จำนวน <%=num %> บัญชี</p>
+        </div>
+        <% let i=1 %>
+            <% alluser.forEach((item)=>{ %>
+                <div class="row">
+                    <div class="num" style="width: 100px;margin-right: 100px;">
+                        <%=i %>
+                    </div>
+
+                    <div class="prefix">
+                        <p>ชื่อผู้ใช้ : </p>
+                        <p>อีเมล : </p>
+                    </div>
+
+                    <div class="username_list">
+                        <p>
+                            <%= item.username %>
+                        </p>
+                        <p>
+                            <%= item.email %>   
+                        </p>
+                    </div>
+                    <div class="btn">
+                        <a href="#detail"><button class="btn_delete" onclick="removeUser('<%=item._id %>')"><i class="fi fi-rr-trash"></i></button></a>
+                    </div>
+                </div>
+                <% i++}) %>
+    </div>
+
+    <script>
+        function removeUser(id){
+            let a = document.getElementById('u')
+            a.href = '/manageuser/removeuser?id='+id
+        }
+    </script>
+
+</body>
+
+</html>

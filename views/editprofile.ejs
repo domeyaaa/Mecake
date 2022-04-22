@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeCake | แก้ไขข้อมูลส่วนตัว</title>
+    <link rel="icon" href="/images/web/logo_1.png">
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/nav.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <style>
+        .login-layout {
+            min-height: 100px !important;
+        }
+
+        .profile_pic {
+            height: 150px;
+            width: 150px;
+            position: relative;
+            left: 45%;
+            border-radius: 50%;
+            background: url('../img/profile_pic.png');
+            background-size: 100% 100%;
+            margin-top: 10%;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .file_pic {
+            position: absolute;
+            bottom: 0;
+            outline: none;
+            color: transparent;
+            width: 100%;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .file_pic::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+
+    </style>
+    <script>
+        function check() {
+            if ('<%=user.gender %>' == 'ชาย') {
+                document.getElementById('male').checked = true;
+            } else if ("<%=user.gender %>" == 'หญิง') {
+                document.getElementById('female').checked = true;
+            } else {
+                document.getElementById('noGender').checked = true;
+            }
+        }
+    </script>
+</head>
+
+<body onload="check()">
+    <nav id="nav">
+        <ul>
+            <a href="/home">
+                <img class="logo" src="/images/web/logo.png" alt="logo"></a>
+            <li class="btn"><a class="active" href="/profile">
+                    <%=user.username %>
+                </a></li>
+            <li class="btn"><a href="/addrecipe">เพิ่มสูตร</a></li>
+            <li class="btn "><a href="/home">หน้าหลัก</a></li>
+        </ul>
+        <div class="breadcrumb">
+            <a href="/profile">
+                <%=user.username %>
+            </a> >
+            <span class="active">แก้ไขข้อมูลส่วนตัว</span>
+        </div>
+    </nav>
+    <div class="wrapper">
+        <div class="profile_pic" style="background-image: url('/images/web/profile_user.png');">
+        </div>
+        <form action="/editprofile/update?id=<%=user._id %>" method="POST">
+            <div class="login-layout">
+                <label for="username">ชื่อผู้ใช้งาน</label>
+                <input type="text" id="username" name="username" required value="<%=user.username %>">
+                <label for="email">อีเมล</label>
+                <input type="email" id="email1" name="email" required value="<%=user.email %>" disabled>
+                <label for="genderGroup">เพศ</label>
+                <div class="radioGroup" id="genderGroup">
+                    <input type="radio" name="gender" value="ชาย" id="male" required>
+                    <label for="male">ชาย</label>
+                    <input type="radio" name="gender" value="หญิง" id="female" required>
+                    <label for="female">หญิง</label>
+                    <input type="radio" name="gender" value="ไม่ระบุ" id="noGender" required>
+                    <label for="noGender">ไม่ระบุ</label>
+                </div>
+                <button type="submit" name="reg_btn">บันทึก</button>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+
+</html>

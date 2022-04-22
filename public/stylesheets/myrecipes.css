@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F6F4F4;
+}
+
+.wrapper-detail {
+    padding: 8em 15% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.img {
+    margin-top: 50px;
+    border-radius: 30px;
+    width: 17vw;
+    height: 24vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0px 3px 15px #333;
+}
+
+.detail-box {
+    width: 100%;
+    padding: 5% 20%;
+}
+
+.detail-box .title h1 {
+    font-size: 1.5em;
+}
+
+.detail-box .title{
+    margin-bottom: 20px;
+}
+
+.profile{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.detail-profile{
+    font-size: 1.25em;
+}
+
+.img-profile {
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+}
+
+.name{
+    font-weight: bold;
+}
+
+.type{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.mate{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.mate ol li {
+    font-size: .8em ;
+    font-weight: normal;
+}
+
+.mate ol{
+    padding-left: 60px;
+}
+
+.mate ul {
+    padding-left: 40px;
+    list-style-type: none;
+}
+
+.mate ul li {
+    font-size: .8em ;
+    font-weight: normal;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.btn-group{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-group button{
+    width: 45%;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.btn-control{
+    border-radius: 10px;
+    font-size: 1.5em;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.edit-btn{
+    transition: .2s;
+    border: 3px solid #f48b29 !important;
+}
+
+.edit-btn:hover{
+    background: #f48b29;
+    color: #F6F4F4;
+}
+
+.del-btn{
+    transition: .2s;
+    border: 3px solid #ff1616 !important;
+}
+
+.del-btn:hover{
+    background: #ff1616 ;
+    color: #F6F4F4;
+}

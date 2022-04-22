@@ -1,0 +1,53 @@
+<% if(locals.message){ %>
+    <script>alert('<%=message %>')</script>
+    <% } %>
+        <!DOCTYPE html>
+        <html lang="en">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="/stylesheets/style.css">
+            <link rel="stylesheet" href="/stylesheets/nav.css">
+            <link rel="icon" href="/images/web/logo_1.png">
+            <title>Me Cake | เข้าสู่ระบบ
+            </title>
+        </head>
+
+        <body>
+            <div class="wrapper js-center">
+                <nav class="nav">
+                    <ul>
+                        <a href="/"><img class="logo" src="/images/web/logo.png" alt="logo"></a>
+                        <li class="btn"><a href="/register">สมัครสมาชิก</a></li>
+                        <li class="btn "><a class="active" href="/login">เข้าสู่ระบบ</a></li>
+                    </ul>
+                </nav>
+                <form action="/auth/login" method="POST">
+                    <div class="login-layout">
+                        <h2>เข้าสู่ระบบ</h2>
+                        <label for="email">อีเมล</label>
+                        <input type="email" id="email" name="email" onchange="changeBorder()" required>
+                        <label for="password">รหัสผ่าน</label>
+                        <input type="password" id="password" required name="password" onchange="changeBorder()">
+                        <button type="submit" name="login_btn">เข้าสู่ระบบ</button>
+                    </div>
+                </form>
+            </div>
+            <script>
+                function changeBorder() {
+                    let borderEmail = document.getElementById('email').value;
+                    let borderPassword = document.getElementById('password').value;
+                    if (borderEmail != "") {
+                        document.getElementById('email').style.borderColor = "#f48b29"
+                    }
+
+                    if (borderPassword != "") {
+                        document.getElementById('password').style.borderColor = "#f48b29"
+                    }
+                }
+            </script>
+        </body>
+
+        </html>

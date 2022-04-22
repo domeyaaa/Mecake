@@ -1,0 +1,48 @@
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2% 10%;
+}
+
+nav ul img {
+    height: 5em;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: right;
+}
+
+nav li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 1.4em;
+    color: #000;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    color: #f48b29;
+}
+
+
+.breadcrumb {
+    font-size: 1.25em;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #000;
+}
+.breadcrumb a:hover{
+    color: #f48b29;
+}

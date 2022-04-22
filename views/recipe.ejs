@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MyRecipes</title>
+    <link rel="stylesheet" href="/stylesheets/myrecipes.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/nav.css">
+    <link rel="icon" href="/images/web/logo_1.png">
+</head>
+
+<body>
+    <nav id="nav">
+        <ul>
+            <a href="/home"><img class="logo" src="/images/web/logo.png" alt="logo"></a>
+            <li class="btn"><a href="/profile">
+                    <%=user.username %>
+                </a></li>
+            <li class="btn"><a href="/addrecipe">เพิ่มสูตร</a></li>
+            <li class="btn "><a class="active" href="/home">หน้าหลัก</a></li>
+        </ul>
+        <div class="breadcrumb">
+            <a href="/home">
+                หน้าหลัก
+            </a> >
+            <span class="active">
+                <%=recipe.recipe_name %>
+            </span>
+        </div>
+    </nav>
+    <div class="wrapper-detail">
+        <div class="img" style="background-image: url('/images/post/<%= recipe.cake_pic%>');">
+        </div>
+        <div class="detail-box">
+            <div class="title">
+                <h1>
+                    <%= recipe.recipe_name %>
+                </h1>
+            </div>
+            <div class="profile">
+                <div class="img-profile" style="background-image: url('/images/web/profile.png');"></div>
+                <div class="detail-profile">
+                    <div class="name">
+                        <%=recipe_by.username %>
+                    </div>
+                    <div class="date">
+                        <span class="time" id="time" ><%=recipe.date %></span>
+                    </div>
+                </div>
+            </div>
+            <div class="type">
+                <span>ชนิดเค้ก : <%=recipe.category %></span>
+            </div>
+            <div class="mate">
+                <span class="topic">วัตถุดิบ</span>
+                <ol>
+                    <% recipe.ingredients.forEach((item)=>{ %>
+                        <li>
+                            <%=item %>
+                        </li>
+                        <% }) %>
+                </ol>
+            </div>
+            <div class="mate">
+                <span class="topic">ขั้นตอน</span>
+                <ul>
+                    <% let i=1 %>
+                        <% recipe.recipe.forEach((item)=>{ %>
+                            <li> <span class="bold"> ขั้นตอนที่ <%=i %> </span>
+                                <%=item %>
+                            </li>
+                            <% i++ }) %>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

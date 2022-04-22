@@ -1,0 +1,154 @@
+
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2% 10%;
+}
+
+nav ul img {
+    height: 5em;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: right;
+}
+
+nav li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 1.4em;
+    color: #000;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    color: #f48b29;
+}
+
+div.wrapper-home{
+    padding-top: 10em;
+    background-color: #f6f4f4;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+div.menu-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+div.menu-bar{
+    width:auto;
+    background-color: #fff;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+}
+
+div.menu-btn{
+    box-sizing: border-box;
+    border-collapse: collapse;
+    height: 9em;
+    width: 180px;
+    transition: .3s;
+    border: 1px solid #cfcfcf;
+}
+
+
+div.img-menu{
+    height: 6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.menu-btn:hover{
+    cursor: pointer;
+    background-color: #f48b29;
+}
+
+div.img-menu img{
+    height: 100%;
+}
+
+div.name-menu{
+    height: 2em;
+    text-align: center;
+}
+
+div.name-menu span{
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+}
+
+div.content{
+    width: 100%;
+    margin-top: 4em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #ac0d0d;
+
+}
+
+div.content-box{
+    flex-wrap: wrap;
+    width: 69%;
+    min-height: 50vh;
+    display: flex;
+    justify-content: left;
+}
+
+div.cake-box{
+    margin: 0px 20px 50px;
+    width: 18em;
+    height: 20em;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    transition: .2s;
+}
+
+div.cake-box:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 10px #f48b29;
+}
+
+div.cake-box div.img-box{
+    width: 100%;
+    height: 12em;
+    background-color: #fff;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-left-radius: 30px;border-top-right-radius: 30px;
+}
+
+div.cake-box div.detail-box{
+    padding: 1em;
+    font-size: 1.25em;
+}
+

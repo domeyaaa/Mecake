@@ -1,0 +1,97 @@
+<% if(locals.message){ %>
+    <script>alert('<%=message %>')</script>
+    <% } %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/nav.css">
+    <link rel="icon" href="/images/web/logo_1.png">
+
+    <title>Me Cake | สมัครสมาชิก %>
+    </title>
+    <script>
+        function changeBorder() {
+            let borderUsername = document.getElementById('username').value;
+            let borderEmail = document.getElementById('email').value;
+            let borderPassword1 = document.getElementById('password1').value;
+            let borderPassword2 = document.getElementById('password2').value;
+
+            if (borderUsername != "") {
+                document.getElementById('username').style.borderColor = "#f48b29"
+            }
+            if (borderEmail != "") {
+                document.getElementById('email').style.borderColor = "#f48b29"
+            }
+            if (borderPassword1 != "") {
+                document.getElementById('password1').style.borderColor = "#f48b29"
+            }
+            if (borderPassword2 != "") {
+                document.getElementById('password2').style.borderColor = "#f48b29"
+            }
+        }
+
+        function checkPasswordMatch() {
+            let pwd1 = document.getElementById('password1').value
+            let pwd2 = document.getElementById('password2').value
+            if (pwd1 != pwd2) {
+                alert('รหัสผ่านไม่ตรงกัน!')
+                return false
+            }
+
+            if (document.getElementById('male').checked) {
+
+            } else if (document.getElementById('female').checked) {
+
+            } else if (document.getElementById('noGender').checked) {
+
+            } else {
+                alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+                return false
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrapper js-center">
+        <nav class="nav">
+            <ul>
+                <a href="/"><img class="logo" src="/images/web/logo.png" alt="logo"></a>
+
+                <li class="btn"><a class="active" href="/register">สมัครสมาชิก</a></li>
+                <li class="btn "><a href="/login">เข้าสู่ระบบ</a></li>
+            </ul>
+        </nav>
+        <form action="/auth/register" method="post">
+            <div class="login-layout">
+                <h2>สมัครสมาชิก</h2>
+                <label for="username">ชื่อผู้ใช้งาน</label>
+                <input type="text" id="username" name="username" onchange="changeBorder()" required>
+                <label for="email">อีเมล</label>
+                <input type="email" id="email1" name="email" onchange="changeBorder()" required>
+                <label for="password1">รหัสผ่าน</label>
+                <input type="password" id="password1" name="password1" onchange="changeBorder()" required>
+                <label for="password2">ยืนยันรหัสผ่าน</label>
+                <input type="password" id="password2" name="password2" onchange="changeBorder()" required>
+                <label for="genderGroup">เพศ</label>
+                <div class="radioGroup" id="genderGroup">
+                    <input type="radio" name="gender" value="ชาย" id="male" required>
+                    <label for="male">ชาย</label>
+                    <input type="radio" name="gender" value="หญิง" id="female" required>
+                    <label for="female">หญิง</label>
+                    <input type="radio" name="gender" value="ไม่ระบุ" id="noGender" required>
+                    <label for="noGender">ไม่ระบุ</label>
+                </div>
+                <button type="submit" name="reg_btn" onclick="return checkPasswordMatch()">สมัครสมาชิก</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

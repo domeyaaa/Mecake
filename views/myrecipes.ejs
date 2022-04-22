@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MyRecipes</title>
+    <link rel="stylesheet" href="/stylesheets/myrecipes.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/nav.css">
+    <link rel="stylesheet" href="/stylesheets/content_profile.css">
+    <link rel="icon" href="/images/web/logo_1.png">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.btn_delete').click(function () {
+                $('.popup_box').css("display", "block");
+            });
+            $('.btn-confirm').click(function () {
+                $('.popup_box').css("display", "none");
+            });
+            $('.btn-cancel').click(function () {
+                $('.popup_box').css("display", "none");
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <nav id="nav">
+        <ul>
+            <a href="/home"><img class="logo" src="/images/web/logo.png" alt="logo"></a>
+            <li class="btn"><a href="/profile" class="active">
+                    <%=user.username %>
+                </a></li>
+            <li class="btn"><a href="/addrecipe">เพิ่มสูตร</a></li>
+            <li class="btn "><a href="/home">หน้าหลัก</a></li>
+        </ul>
+        <div class="breadcrumb">
+            <a href="/profile">
+                <%=user.username %>
+            </a> >
+            <span class="active"><%=recipe.recipe_name %></span>
+        </div>
+    </nav>
+    <div class="wrapper-detail">
+        <div class="img" style="background-image: url('/images/post/<%=recipe.cake_pic%>');">
+        </div>
+        <div class="detail-box">
+            <div class="title"  style="width: 100%;">
+                <h1 style="width: 100%;"><%=recipe.recipe_name %></h1>
+            </div>
+            <div class="profile">
+                <div class="img-profile" style="background-image: url('/images/web/profile.png');"></div>
+                <div class="detail-profile">
+                    <div class="name">
+                        <%=recipe_by.username %>
+                    </div>
+                    <div class="date">
+                        <%=recipe.date%>
+                    </div>
+                </div>
+            </div>
+            <div class="type">
+                <span>ชนิดเค้ก : <%=recipe.category%></span>
+            </div>
+            <div class="mate">
+                <span class="topic">วัตถุดิบ</span>
+                <ol>
+                    <% recipe.ingredients.forEach((item)=> { %>
+                        <li>
+                            <%=item %>
+                        </li>
+                        <% }) %>
+                </ol>
+            </div>
+            <div class="mate">
+                <span class="topic">ขั้นตอน</span>
+                <ul>
+                    <% let i = 1; recipe.recipe.forEach((item)=>{ %>
+                        <li><span class="bold"> ขั้นตอนที่ <%=i %> </span><%=item %></item></li>
+                    <% i++ }) %>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <button class="edit-btn btn-control" onclick="document.location.href='/editrecipe?id=<%=recipe._id %>'">แก้ไขสูตร</button>
+                <button class="btn_delete del-btn btn-control " >ลบสูตร</button>
+            </div>
+        </div>
+    </div>
+    <div class="popup_box">
+        <i class="fi fi-rr-exclamation"></i>
+        <h1>คุณต้องการลบสูตรหรือไม่ ? </h1>
+        <div class="btns">
+            <a href="/myrecipe/delrecipe?id=<%=recipe._id %>" class="btn-confirm">ยืนยัน</a>
+            <a href="#" class="btn-cancel">ยกเลิก</a>
+        </div>
+    </div>
+</body>
+
+</html>

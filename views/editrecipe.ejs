@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/editrecipe.css">
+    <link rel="stylesheet" href="/stylesheets/addrecipe.css">
+    <title>Macake | แก้ไขสูตร</title>
+    <script>
+
+        function checkType() {
+            if ('<%=recipe.category %>' == 'บัตเตอร์เค้ก') {
+                document.getElementById('butter-cake').checked = true;
+            } else if ('<%=recipe.category %>' == 'ชีสเค้ก') {
+                document.getElementById('cheese-cake').checked = true;
+            } else if ('<%=recipe.category %>' == 'เรดเวลเวตเค้ก') {
+                document.getElementById('red-velvet-cake').checked = true;
+            } else if ('<%=recipe.category %>' == 'สปันจ์เค้ก') {
+                document.getElementById('sponge-cake').checked = true;
+            } else if ('<%=recipe.category %>' == 'ชิฟฟอนเค้ก') {
+                document.getElementById('chiffon-cake').checked = true;
+            } else if ('<%=recipe.category %>' == 'เค้กไร้แป้ง') {
+                document.getElementById('flour-cake').checked = true;
+            } else if ('<%=recipe.category %>' == 'เค้กผลไม้') {
+                document.getElementById('fruit-cake').checked = true;
+            } else {
+
+            }
+        }
+
+        function addIngredient() {
+            let newInputInd = document.createElement("input");
+            newInputInd.className = "inp";
+            newInputInd.type = "text"
+            newInputInd.name = "ingredients[]"
+            document.getElementById('add1').appendChild(newInputInd)
+        }
+
+        function addRecipe() {
+            let newInputInd2 = document.createElement("input");
+            newInputInd2.className = "inp";
+            newInputInd2.type = "text"
+            newInputInd2.name = "recipe[]"
+            document.getElementById('add2').appendChild(newInputInd2)
+        }
+    </script>
+
+    <style>
+        .image-preview img {
+            display: block;
+        }
+
+        .image-preview__default-text {
+            display: none;
+        }
+
+        .add-group {
+            flex-direction: row-reverse;
+            justify-content: left;
+            width:670px;
+        }
+
+        .add-group input{
+            max-width: 500px !important;
+        }
+
+        .add {
+            margin:0 5px;
+        }
+
+        .remove{
+            background-color: #FF1616;
+            padding-top: 0;
+            margin:0 20px;
+        }
+
+        .remove:hover{
+            background-color: #ff6d6d;
+        }
+
+    </style>
+</head>
+
+<body onload="checkType()">
+    <nav id="nav">
+        <ul>
+            <a href="./home"><img class="logo" src="/images/web/logo.png" alt="logo"></a>
+            <li class="btn"><a href="/profile" class="active">
+                    <%=user.username %>
+                </a></li>
+            <li class="btn"><a href="/addrecipe">เพิ่มสูตร</a></li>
+            <li class="btn "><a href="/home">หน้าหลัก</a></li>
+        </ul>
+        <div class="breadcrumb">
+            <a href="/profile">
+                <%=user.username %>
+            </a> >
+            <a href="#" onclick="history.back()"><%=recipe.recipe_name %></a> >
+            <span class="active">แก้ไขสูตร</span>
+        </div>
+    </nav>
+    <form action="/editrecipe/update?id=<%=recipe._id %>" method="POST" enctype="multipart/form-data">
+        <div class="wrapper-add">
+            <div class="add-box">
+                <div class="add-img">
+                    <div class="image-preview" id="imagePreview">
+                        <img src="/images/post/<%=recipe.cake_pic%>" alt="Image Preview" class="image-preview__image">
+                        <span class="image-preview__default-text">Image Preview</span>
+                    </div>
+                    <label for="inpFile" class="inpFile">อัปโหลดรูปภาพ</label>
+                    <input type="file" name="inpFile" id="inpFile">
+                </div>
+                <div class="add-detail">
+                    <label for="cake-name">ชื่อเค้ก</label>
+                    <input type="text" id="cake_name" name="recipe_name" value="<%=recipe.recipe_name %>">
+                    <label for="cake-name">วัตถุดิบ</label>
+                    <div class="add-group" id="add1">
+                        <div class="add" onclick="addIngredient()">+</div>
+                        <% let i = 1%>
+                        <% recipe.recipe.forEach((item)=>{ %>
+                            <div class="add remove" id="removeIgn<%=i %>" onclick="return removeIngredient('ign<%= i %>')">-</div>
+                            <input class="inp" type="text" id="ign<%=i  %>" name="ingredients[]" value="<%=item %>">
+                        <%  i++ }) %>
+                    </div>
+                    <label for="cake-name">ขั้นตอน</label>
+                    <div class="add-group" id="add2">
+                        <div class="add" onclick="addRecipe()">+</div>
+                        <% let j = 1%>
+                        <% recipe.recipe.forEach((item)=>{ %>
+                            <div class="add remove" id="removeRec<%=j %>" onclick="return removeRecipe('rec<%= j %>')">-</div>
+                            <input class="inp" type="text" id="rec<%=j  %>" name="recipe[]" value="<%=item %>">
+                        <%  j++ }) %>
+                    </div>
+                </div>
+                <div class="header"><strong>ชนิดเค้ก</strong> </div>
+                <div class="type-cake">
+                    <input type="radio" name="category" id="butter-cake" value="บัตเตอร์เค้ก">
+                    <label for="butter-cake">บัตเตอร์เค้ก</label>
+                    <input type="radio" name="category" id="cheese-cake" value="ชีสเค้ก">
+                    <label for="cheese-cake">ชีสเค้ก</label>
+                    <input type="radio" name="category" id="red-velvet-cake" value="เรดเวลเวตเค้ก">
+                    <label for="red-velvet-cake">เรดเวลเวตเค้ก</label>
+                    <input type="radio" name="category" id="sponge-cake" value="สปันจ์เค้ก">
+                    <label for="sponge-cake">สปันจ์เค้ก</label>
+                    <input type="radio" name="category" id="chiffon-cake" value="ชิฟฟอนเค้ก">
+                    <label for="chiffon-cake">ชิฟฟอนเค้ก</label>
+                    <input type="radio" name="category" id="flour-cake" value="เค้กไร้แป้ง">
+                    <label for="flour-cake">เค้กไร้แป้ง</label>
+                    <input type="radio" name="category" id="fruit-cake" value="เค้กผลไม้">
+                    <label for="fruit-cake">เค้กผลไม้</label>
+                </div>
+                <button type="submit">บันทึก</button>
+            </div>
+        </div>
+    </form>
+    
+    <script>
+
+        const inpFile = document.getElementById('inpFile');
+        const previewContainer = document.getElementById('imagePreview');
+        const previewImage = previewContainer.querySelector('.image-preview__image');
+        const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
+
+        inpFile.addEventListener("change", function () {
+            const file = this.files[0]
+
+            if (file) {
+                const reader = new FileReader();
+
+                previewDefaultText.style.display = "none";
+                previewImage.style.display = "block";
+
+                reader.addEventListener('load', function () {
+                    previewImage.setAttribute("src", this.result)
+                });
+                console.log(file)
+                reader.readAsDataURL(file);
+            } else {
+                previewDefaultText.style.display = null;
+                previewImage.style.display = null;
+                previewImage.setAttribute("src", "");
+            }
+        })
+    </script>
+    <script>
+        function removeIngredient(x){
+            let y = x.split('n');
+            let i = y[1]
+            if( i == 1){
+                return alert('ไม่สามารถลบวัตถุดิบที่ 1 ได้')
+            }
+            document.getElementById('removeIgn'+i).remove();
+            document.getElementById(x).remove();
+        }
+
+        function removeRecipe(x){
+            let y = x.split('c');
+            let i = y[1]
+            if( i == 1){
+                return alert('ไม่สามารถลบขั้นตอนที่ 1 ได้')
+            }
+            document.getElementById('removeRec'+i).remove();
+            document.getElementById(x).remove();
+        }
+    </script>
+</body>
+
+</html>

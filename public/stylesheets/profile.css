@@ -1,0 +1,85 @@
+body{
+    background: #F6F4F4;
+}
+.contrainer{
+    padding-top: 2em;
+    width: 70%;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+.profile{
+    display: flex;
+    margin-top: 10%;
+}
+.profile img {
+    width: 20%;
+    border-radius: 100%;
+    margin-right: 2%;
+    box-shadow: 9px 9px 5px -8px rgba(219,215,215,0.67);
+    -webkit-box-shadow: 9px 9px 5px -8px rgba(219,215,215,0.67);
+    -moz-box-shadow: 9px 9px 5px -8px rgba(219,215,215,0.67);
+}
+.profile .profile_name .username{
+    font-size: 1.25em;
+    font-weight: bolder;
+}
+
+.box .edit-btn , .logout-btn{
+    padding: 2%;
+    margin: 1%;
+    border-radius: 15px;
+    line-height: 1;
+    background: #F6F4F4;
+    cursor: pointer;
+    transition: all 0.1s linear;
+    font-size: 1.25em;
+}   
+
+.box .edit-btn{
+    border: 2px solid #f48b29;
+}
+.box .edit-btn:hover{
+    background:#f48b29;
+    color: #F6F4F4;
+    box-shadow: 9px 9px 5px -8px rgba(219,215,215,0.67);
+    -webkit-box-shadow: 9px 9px 5px -8px rgba(219,215,215,0.67);
+    -moz-box-shadow: 9px 9px 5px -8px rgba(219,215,215,0.67);
+}
+.box .edit-btn:focus{
+    background:#f48b29;
+    color: #F6F4F4;
+    box-shadow: 9px 9px 5px -8px rgba(219,215,215,0.67);
+    -webkit-box-shadow: 9px 9px 5px -8px rgba(219,215,215,0.67);
+    -moz-box-shadow: 9px 9px 5px -8px rgba(219,215,215,0.67);
+}
+.box .logout-btn{
+    border: 2px solid #FF1616;
+}
+.box .logout-btn:hover{
+    background:#FF1616;
+    color: #F6F4F4;
+    box-shadow: 9px 9px 5px -8px rgba(219,215,215,0.67);
+    -webkit-box-shadow: 9px 9px 5px -8px rgba(219,215,215,0.67);
+    -moz-box-shadow: 9px 9px 5px -8px rgba(219,215,215,0.67);
+}
+.box .logout-btn:focus{
+    background:#FF1616;
+    color: #F6F4F4;
+    box-shadow: 9px 9px 5px -8px rgba(219,215,215,0.67);
+    -webkit-box-shadow: 9px 9px 5px -8px rgba(219,215,215,0.67);
+    -moz-box-shadow: 9px 9px 5px -8px rgba(219,215,215,0.67);
+}
+.box {
+    display: flex;
+    width: 50%;
+    align-items: center;
+}
+
+.box:nth-child(1) {
+    justify-content: flex-start;
+
+}
+.box:nth-child(2) {
+    justify-content: flex-end;
+
+}
