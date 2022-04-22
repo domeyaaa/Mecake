@@ -40,7 +40,6 @@ var editrecipeRouter = require('./routes/editrecipe');
 const monk = require('monk')
 
 // Connection URL
-// const url = 'mongodb+srv://domelaz:Dome135790@cluster0.ptvky.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const url = 'localhost:27017/mecake_db';
 const db = monk(url);
 db.then(() => {
